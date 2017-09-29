@@ -1,0 +1,54 @@
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.code-piece { display: flex;  box-sizing: content-box; color:white; cursor:pointer; border: none; }
+
+.code { position: relative; }
+
+.scrc-template { display: none; }
+
+/*****************/
+
+.toolbox>.code-piece { position: relative; margin-right: auto; }
+.code>.code-piece { position: absolute; margin-right: auto; }
+.code-piece>* { position: absolute; top: 0; bottom: 0; margin: auto 0; }
+.bracket>* { position: absolute; top: 0; bottom: 0; margin: auto 0; }
+/*****************/
+
+.code-piece .text { position: absolute; }
+.code-piece>.element-space { border: 0px; padding: 0px; box-sizing: border-box; justify-content: center; }
+
+.element-space >input { width:10px; height: 16px; margin: 0px; border: 0px; padding: 0 2px; font-size: medium; }
+pre.text { display: inline-block; border: 0; padding: 0; width: auto; height: 16px; font-size: small; font-family: 새굴림; font-weight: inherit; }
+
+/*****************/
+
+.element {left: auto; right: auto; width: auto; vertical-align: top; }
+.element.element-space { display: inline-block; }
+.element.element-space >.element { margin: 0px; }
+
+/*****************/
+
+.toolbox ul { position: relative; list-style: none; border: 0; top: 0px; bottom: 0px; width: 100%; height: 100%; }
+.toolbox ul li { position: relative; border: 0; margin: 5px; }
+
+/*****************/
+
+#virtual_dom { margin:0; border:0; padding:0; white-space: nowrap; font-size: larger; }
+
+/*****************/
+
+.control.bracketed { width: 18px; }
+.bracket { width: 100%; margin: 0; position: absolute; border: 0; padding: 0; }
+.b-line { width: 18px; height: 10px; }
+.b-line>.text { width: 100%; height: 100%; user-select: none; }
+.b-line>.movement-space { position: absolute; right: 0px; width: auto; height: 10px; border: 0; }
+.b-line>.movement-space { background-color: transparent; cursor: pointer; }
+.b-close { }
+.b-close .text { width: 95%; text-align: right; }
+
+#container { flex: 1; }
