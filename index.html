@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>
+            UI
+        </title>
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width, height=device-height, initial-scale=1.0"/>
+
+		<link rel="stylesheet" type="text/css" href="lib/jquery-ui.min.css" media="all" />
+
+        <link rel="stylesheet" type="text/css" href="css/main.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="css/blocks.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/blocks.color.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/blocks.zIndex.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/sprite.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/column2.css" media="all" />
+
+		<script src="lib/jquery-1.12.1.min.js"></script>
+		<script src="lib/jquery-ui.js"></script>
+		<script src="https://cdn.rawgit.com/konvajs/konva/0.13.0/konva.min.js"></script>
+
+        <script src="js/main.js"></script>
+		<script src="js/util.js"></script>
+		<script src="js/main-screen.js"></script>
+		<script src="js/konvadiv.js"></script>
+		<script src="js/blocks.js"></script>
+		<script src="js/event.js"></script>
+		<script src="js/blocks.drag.js"></script>
+		<script src="js/blocks.event.js"></script>
+		<script src="js/blocks.event.action.js"></script>
+		<script src="js/blocks.event.calc.js"></script>
+		<script src="js/blocks.event.drag.js"></script>
+		<script src="js/blocks.circuit.js"></script>
+		<script src="js/blocks.variables.js"></script>
+		<script src="js/blocks.functions.js"></script>
+		<script src="js/sound.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/radioFunction.js"></script>
+    </head>
+
+    <body class="body">
+		<div class="menubar">
+			<div class="menu">
+				<img class="menuLi scratchlogobutton"></img>
+				<img class="menuLi languageButtonbutton"></img>
+				<label class="menuLi">파일
+					<ul class="submenuUl">
+						<li class="submenuLi"><a>새로만들기</a></li>
+						<li class="submenuLi"><a>코드 업로드</a></li>
+						<li class="submenuLi"><a>코드 다운로드</a></li>
+						<li class="submenuLi"><a>코드 초기화</a></li>
+					</ul>
+				</label>
+				<label class="menuLi">편집
+					<ul class="submenuUl">
+						<li class="submenuLi"><a>삭제 취소</a></li>
+						<li	class="submenuLi"><a>무대 줄이기</a></li>
+						<li class="submenuLi"><a>터보 모드</a></li>
+					</ul>
+				</label>
+				<label class="menuLi">도움말</label>
+				<label class="menuLi">스크래치란</label>
+				<img class="menuLi copyToolbutton"></img>
+				<img class="menuLi cutToolbutton"></img>
+				<img class="menuLi growToolbutton"></img>
+				<img class="menuLi shrinkToolbutton"></img>
+				<img class="menuLi helpToolbutton"></img>
+				<label class="menuLi endAlign">로그인</label>
+			</div>
+		</div>
+		<div class="main">
+            <div class="column1">
+				<div class="screenbar">
+					<a href="#popup1" class="screenbutton fullscreenbuttonOff">
+						<div id="popup1" class="overlay">
+							<div class="popup">
+								<a class="close" href="#">&times;</a>
+								<div class="content">	</div>
+							</div>
+						</div>
+					</a>
+					<img class="screenbutton stopbuttonOff floatright"></img>
+					<img class="screenbutton startbuttonOff floatright"></img>
+				</div>
+				<div id="container" class="screen"></div>
+				<!--<canvas id="myCanvas" class="screen"></canvas>-->
+				<!--<div id="container2" class="test">-->
+					<!--<div id="container3" class="testcontent"></div>-->
+				<!--</div>-->
+				<div class="screenxy"><!--x:연동필요 y:연동필요--></div>
+				<div class="spritebar">
+					<img class="spritebutton cameraOff"></img>
+					<label class="spritebutton importOff" for="input"></label>
+					<input type="file" id="input" class ="file_input_hidden">
+					<img class="spritebutton paintbrushOff"></img>
+					<img class="spritebutton libraryOff"></img>
+				</div>
+				<div class="sprite-wrap">
+					<!--<div class="spritebackground"></div>-->
+					<div class="sprite">
+
+						<ul id="sprite_list">
+						</ul>
+
+					</div>
+				</div>
+				<footer class="tempfooter"></footer>
+            </div>
+			<div class="column2">
+				<div class="workmenulabelset">
+							<label name="workmenu" value="01" class="workmenulabel Workmenulabelactive">스크립트</label>
+							<label name="workmenu" value="02" class="workmenulabel">모양</label>
+							<label name="workmenu" value="03" class="workmenulabel">소리</label>
+							<div id="empty-line"></div>
+				</div>
+				<div class="workmenus">
+					<div class="workmenu" name = "workmenu-visible" value="01">
+						<div class="tools">
+
+							<div class="toollabels">
+								<label name="toolbox" value="01">동작</label>
+								<label name="toolbox" value="02">이벤트</label>
+								<label name="toolbox" value="03">형태</label>
+								<label name="toolbox" value="04">제어</label>
+								<label name="toolbox" value="05">소리</label>
+								<label name="toolbox" value="06">관찰</label>
+								<label name="toolbox" value="07">펜</label>
+								<label name="toolbox" value="08">연산</label>
+								<label name="toolbox" value="09">데이터</label>
+								<label name="toolbox" value="10">추가 블록</label>
+							</div>
+							<div class="horizon-separation-line">　</div>
+							<div class="toolboxes">
+								<div class="toolbox" name = "toolbox-visible"value="01"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="02"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="03"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="04"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="05"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="06"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="07"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="08"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="09"></div>
+								<div class="toolbox" name = "toolbox-hidden" value="10"></div>
+							</div>
+
+							<footer class="tempfooter"></footer>
+						</div>
+						<div class="code">코드</div>
+						<footer class="tempfooter"></footer>
+					</div>
+					<div class="workmenu" name = "workmenu-hidden" value="02">
+						<div class="imageSprite">
+							<div class="imageSpritebar">
+								<img class="imagebutton cameraOff"></img>
+								<img class="imagebutton importOff"></img>
+								<img class="imagebutton paintbrushOff"></img>
+								<img class="imagebutton libraryOff"></img>
+							</div>
+							<div class="imageSpritepreview">
+							</div>
+							<footer class="tempfooter"></footer>
+						</div>
+						<div class="imageWrap01"><!-- 괜찮은 이름이 생각안난다. imageEditor-->
+							<div class="imageWorkFlow">
+								<div class="imageWorkname"></div>
+								<div class="imageUnredo">
+									<img class="imagebutton undoOff"></img>
+									<img class="imagebutton redoOff"></img>
+								</div>
+								<div class="imageAddimage">
+									<img class="imagebutton cameraOff">버튼 변경필요.</img>
+									<img class="imagebutton cameraOff">버튼 변경필요.</img>
+									<img class="imagebutton cameraOff">버튼 변경필요.</img>
+								</div>
+								<footer class="tempfooter"></footer>
+							</div>
+							<div class="imageDraw">
+								<div class="imageCanvas"></div>
+								<div class="imageToolbar">
+									<img class="imagebutton cropOff"></img>
+									<img class="imagebutton flipHOff"></img>
+									<img class="imagebutton flipVOff"></img>
+									<img class="imagebutton setCenterOff"></img>
+									<img class="imagebutton editOff"></img>
+									<img class="imagebutton patheditOff"></img>
+									<img class="imagebutton pathOff"></img>
+									<img class="imagebutton vectorLineOff"></img>
+									<img class="imagebutton vectorRectOff"></img>
+									<img class="imagebutton vectorEllipseOff"></img>
+									<img class="imagebutton textOff"></img>
+									<img class="imagebutton paintbucketOff"></img>
+									<img class="imagebutton bitmapStampOff"></img>
+								</div>
+								<footer class="tempfooter"></footer>
+							</div>
+							<div class="imagePalettes">
+								<div class="imageLinetool"></div>
+								<div class="imagePalette"></div>
+								<div class="imageEtctool"></div>
+								<footer class="tempfooter"></footer>
+							</div>
+							<footer class="tempfooter"></footer>
+						</div>
+							<footer class="tempfooter"></footer>
+<!--					</div>						<div class="shapes">
+
+						</div>
+						<div class="shapefix">
+
+							<select id="shapetoolselect">
+								<option value="brush">Brush</option>
+								<option value="eraser">Eraser</option>
+							</select>
+
+							<div id="shapecontainer"></div>
+
+
+						</div>-->
+					</div>
+					<div class="workmenu" name = "workmenu-hidden" value="03">
+
+					</div>
+				</div>
+			</div>
+		<footer class="tempfooter"></footer>
+		</div>
+		<div class="scrc-template code-piece event">
+			<span class="code-piece event magnet" action="start">
+				<pre class="text">클릭했을 때</pre>
+			</span>
+		</div>
+
+		<div class="scrc-template code-piece control">
+			<span class="code-piece control magnet" action="sleep">
+				<span class="element-space number"><!--
+				---><input class="default element number" type="text" calc="number" return-type="number" value="0"></span><!--
+			---><pre class="text">초 기다리기</pre>
+			</span>
+			<span class="code-piece control bracketed b-out magnet" action="repeat">
+				<span class="bracket magnet b-open" action="non-action">
+					<span class="element-space number"><!--
+					---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+				---></span>
+					<pre class="text"> 번 반복하기</pre>
+				</span>
+				<span class="bracket b-line">
+					<pre class="text">　</pre>
+					<span class="movement-space">
+					</span>
+				</span>
+				<span class="bracket b-close">
+					<pre class="text">¶</pre>
+				</span>
+			</span>
+			<span class="code-piece control bracketed b-out magnet" action="infinite-repeat">
+				<span class="bracket magnet b-open" action="non-action">
+					<pre class="text">무한 반복하기</pre>
+				</span>
+				<span class="bracket b-line">
+					<pre class="text">　</pre>
+					<span class="movement-space">
+					</span>
+				</span>
+				<span class="bracket b-close">
+					<pre class="text">¶</pre>
+				</span>
+			</span>
+			<span class="code-piece control bracketed b-out magnet" action="if">
+				<span class="bracket magnet b-open" action="non-action">
+					<pre class="text">만약 </pre>
+					<span class="element-space number"><!--
+					---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+				---></span>
+					<pre class="text"> 라면</pre>
+				</span>
+				<span class="bracket b-line">
+					<pre class="text">　</pre>
+					<span class="movement-space">
+					</span>
+				</span>
+				<span class="bracket b-close">
+					<pre class="text">¶</pre>
+				</span>
+			</span>
+			<span class="code-piece control bracketed b-out magnet" action="if-else">
+				<span class="bracket magnet b-open" action="non-action">
+					<pre class="text">만약 </pre>
+					<span class="element-space number"><!--
+					---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+				---></span>
+					<pre class="text"> 라면</pre>
+				</span>
+				<span class="bracket b-line">
+					<pre class="text">　</pre>
+					<span class="movement-space">
+					</span>
+				</span>
+				<span class="bracket magnet b-open" action="non-action">
+					<pre class="text">아니면</pre>
+				</span>
+				<span class="bracket b-line">
+					<pre class="text">　</pre>
+					<span class="movement-space">
+					</span>
+				</span>
+				<span class="bracket b-close">
+					<pre class="text">¶</pre>
+				</span>
+			</span>
+		</div>
+
+		<div class="scrc-template code-piece operator">
+			<span class="code-piece binary operator element" calc="plus" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">＋</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="minus" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">－</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="mul" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">×</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="sub" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">÷</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="random" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="1"><!--
+			---></span><!--
+			---><pre class="text">부터</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="9"><!--
+			---></span><!--
+			---><pre class="text">사이의 난수</pre><!--
+			--->
+			</span>
+			<span class="code-piece binary operator element" calc="lt" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">&lt</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="eq" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">＝</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="gt" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">&gt</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="and" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">그리고</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece binary operator element" calc="or" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">또는</pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span>
+			</span>
+			<span class="code-piece monoary operator element" calc="not" return-type="number">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">가(이) 아니다</pre>
+			</span>
+		</div>
+
+		<div class="scrc-template code-piece movement">
+			<span class="code-piece movement magnet" action="move">
+				<span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">만큼 움직이기</pre>
+			</span>
+			<span class="code-piece movement magnet" action="right-rotate"><!--
+			---><pre class="text">오른쪽으로 </pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+			---><pre class="text">도 돌기</pre>
+			</span>
+			<span class="code-piece movement magnet" action="left-rotate"><!--
+			---><pre class="text">왼쪽으로 </pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+			---><pre class="text">도 돌기</pre>
+			</span>
+			<span class="code-piece movement magnet" action="point-in-direction"><!--
+			--><span class="element-space number"><!--
+				--><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+			--><pre class="text">도 방향 보기</pre>
+			</span>
+			<span class="code-piece movement magnet" action="rach-gu"><!--
+			--><pre class="text">x: </pre><!--
+			--><span class="element-space number"><!--
+				--><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+			--><pre class="text"> y: </pre><!--
+			--><span class="element-space number"><!--
+				--><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+			--><pre class="text">로 이동하기</pre>
+			</span>
+			<span class="code-piece movement element" calc="x-position">
+				<pre class="text">x좌표</pre>
+			</span>
+			<span class="code-piece movement element" calc="y-position">
+				<pre class="text">y좌표</pre>
+			</span>
+			<span class="code-piece movement element" calc="comhair">
+				<pre class="text">방향</pre>
+			</span>
+		</div>
+		<div class="scrc-template code-piece data">
+			<button id="create_variable">변수 만들기</button>
+			<span class="code-piece data magnet" action="assign"><!--
+			---><span class="element-space number"><!--
+				---><input class="default element" type="text" disabled></span><!--
+			---><pre class="text">을(를) </pre><!--
+			---><span class="element-space number"><!--
+				---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+			---></span><!--
+			---><pre class="text">로 정하기</pre>
+			</span>
+		</div>
+		<div class="scrc-template code-piece variable">
+			<span class="code-piece variable element" calc="value" title="0">
+				<pre class="text">noname</pre>
+			</span>
+		</div>
+		<div class="scrc-template code-piece additional">
+			<button id="create_function">블록 만들기</button>
+		</div>
+		<div class="scrc-template code-piece function">
+			<span class="code-piece function magnet" action="non-action">
+				<pre class="text">noname</pre>
+			</span>
+		</div>
+		<div class="scrc-template code-piece function-define">
+			<span class="code-piece function-define magnet" action="non-action">
+				<pre class="text">정의하기</pre>
+			</span>
+	<span class="code-piece movement magnet" action="move">
+		<span class="element-space number"><!--
+		---><input class="default element number" calc="number" type="text" return-type="number" value="0"><!--
+	---></span><!--
+	---><pre class="text">만큼 움직이기</pre>
+	</span>
+	<span class="code-piece movement magnet" action="right-rotate"><!--
+	---><pre class="text">오른쪽으로 </pre><!--
+	---><span class="element-space number"><!--
+		---><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+	---><pre class="text">도 돌기</pre>
+	</span>
+	<span class="code-piece movement magnet" action="left-rotate"><!--
+	---><pre class="text">왼쪽으로 </pre><!--
+	---><span class="element-space number"><!--
+		---><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+	---><pre class="text">도 돌기</pre>
+	</span>
+	<span class="code-piece movement magnet" action="point-in-direction"><!--
+	--><span class="element-space number"><!--
+		--><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+	--><pre class="text">도 방향 보기</pre>
+	</span>
+	<span class="code-piece movement magnet" action="rach-gu"><!--
+	--><pre class="text">x: </pre><!--
+	--><span class="element-space number"><!--
+		--><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+	--><pre class="text"> y: </pre><!--
+	--><span class="element-space number"><!--
+		--><input class="default element number" calc="number" type="text" return-type="number" value="0"></span><!--
+	--><pre class="text">로 이동하기</pre>
+	</span>
+	<span class="code-piece movement element" calc="x-position">
+		<pre class="text">x좌표</pre>
+	</span>
+	<span class="code-piece movement element" calc="y-position">
+		<pre class="text">y좌표</pre>
+	</span>
+	<span class="code-piece movement element" calc="comhair">
+		<pre class="text">방향</pre>
+	</span>
+		</div>
+    </body>
+	<footer class="tempfooter"></footer>
+</html>
